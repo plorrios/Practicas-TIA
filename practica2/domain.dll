@@ -1,0 +1,64 @@
+(define (domain  carreteras)
+(:requirements :durative-actions :typing: fluents)
+
+(:types cisterna pavimentadora compactadora cuadrilla -object)
+
+(:predicates	(at ?x - (either cuadrilla cisterna pavimentadora compactadora) ?y)
+				(estado ?t - tramo ?c - compactado ?pa - pavimentado ?a - aplastado ?pi - pintado ?v - vallado ?l - luces)
+				(camino ?t1 ?t2 - tramo)
+)
+(:functions	(speedm ?m (either cisterna pavimentadora compactadora))
+			(speedc ?c cuadrilla)
+			(distancia ?t1 ?t2 - tramo)
+)
+
+(:durative-action mover-cuadrilla
+	:parameters(?c - cuadrilla ?t1 ?t2 - tramo)
+	:duration(=?duration(/(distancia ?t1 ?t2)(speed ?c)))
+	:condition(and(at ?c ?t1)
+				  (camino ?t1 ?t2))
+	:effect(and(at ?c ?t2)
+			   (not (at ?c ?t1)))
+)
+	
+(:durative-action mover-maquinaria
+	:parameters(?m - (either cisterna pavimentadora compactadora) ?t1 ?t2 - tramo)
+	:duration(=?duration(/(distancia ?t1 ?t2)(speed ?c)))
+	:condition(and(at ?m - cuadrilla ?t1)
+				  (camino ?t1 ?t2))
+	:effect(at ?m ?t2)
+		   (not (at ?m ?t1)))
+)
+
+(:durative-action compactar
+	:parameters()
+	:duration()
+	:condition()
+	:effect()
+
+)
+
+(:durative-action pavimentar
+
+
+)
+
+(:durative-action aplastar
+
+
+)
+
+(:durative-action pintar
+
+
+)
+
+(:durative-action vallar
+
+
+)
+
+(:durative-action pluces
+
+
+)

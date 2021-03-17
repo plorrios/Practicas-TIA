@@ -1,0 +1,4 @@
+    (printout t"introduce la necesidad de reasfaltado" crlf)
+	(bind ?Redad4 (read))
+	(fuzzify necesidad-reasfaltado ?Redad4 0)
+	(assert (carretera (Agrietamiento ?Redad1)(Temperatura ?Redad2)(necesidad-reasfaltado ?Redad3)(densidad-trafico ?Redad4)))
